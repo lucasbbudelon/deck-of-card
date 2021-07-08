@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "deck-of-card"
+    }
+  },
+  "defaultProject": "deck-of-card",
+  "cli": {
+    "analytics": "c4693bc4-7ff4-41dc-8893-4eae2e48c7a4"
+  }
 }
