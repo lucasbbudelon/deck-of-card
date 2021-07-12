@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 pb-3">
+      <h1>
+        <strong>Deck Id:</strong>
+        <a [routerLink]="['/deck',deckId]">{{deckId}}</a>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mb-5" *ngFor="let card of cards">
+      <img [src]="card.image" />
+    </div>
+  </div>
+</div>
