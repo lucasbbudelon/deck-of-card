@@ -15,14 +15,14 @@ export class ApiService {
   ) { }
 
   getDeckDraw(deckId: string, numberOfCards: number = 8): Observable<Draw> {
-    return this.httpClient.get<Draw>(`${environment.apiUrl}/deck/${deckId}/draw/?count=${numberOfCards}`);
+    return this.httpClient.get<Draw>(`${environment.deckOfCardsApi}/deck/${deckId}/draw/?count=${numberOfCards}`);
   }
 
   getDeck(id: string) {
-    return this.httpClient.get<Deck>(`${environment.apiUrl}/deck/${id}?jokers_enabled=true`);
+    return this.httpClient.get<Deck>(`${environment.deckOfCardsApi}/deck/${id}?jokers_enabled=true`);
   }
 
   postDeck() {
-    return this.httpClient.get<Deck>(`${environment.apiUrl}/deck/new?jokers_enabled=true`);
+    return this.httpClient.get<Deck>(`${environment.deckOfCardsApi}/deck/new?jokers_enabled=true`);
   }
 }
