@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "json-server --watch api/db.json --port 4201"
+    "api": "json-server api/db.json --port 4201"
   },
   "private": true,
   "dependencies": {

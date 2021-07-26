@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
+
 import { USER_TYPES } from '../../users.constants';
 import { User, UserType } from '../../users.models';
 import { UsersService } from '../../users.service';
@@ -16,20 +17,19 @@ export class UserFormComponent implements OnInit, OnDestroy {
   @Input() user: User;
 
   get userTypes() {
-    debugger;
     return Object
       .values(UserType)
       .map(value => {
         return {
           label: USER_TYPES[value],
-          value: value,
-        }
+          value,
+        };
       });
   }
 
   public userForm = new FormGroup({
     id: new FormControl(null),
-    login: new FormControl(null, [Validators.required]),
+    login: new FormControl(null, [Validators.required, Validators.minLength(5)]),
     name: new FormControl(null),
     type: new FormControl(null),
   });
@@ -67,15 +67,13 @@ export class UserFormComponent implements OnInit, OnDestroy {
   submit() {
     const user: User = this.userForm.value;
 
-    debugger;
-
     if (this.userForm.invalid) {
       return;
     }
 
     this.usersService
       .save(user)
-      .subscribe((user) => this.close(user));
+      .subscribe((x) => this.close(x));
   }
 
   onChangeType() {

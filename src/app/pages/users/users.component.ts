@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { UserDeleteComponent } from './modals/user-delete/user-delete.component';
 import { UserFormComponent } from './modals/user-form/user-form.component';
 import { User } from './users.models';
@@ -37,8 +38,8 @@ export class UsersComponent implements OnInit {
     const modalRef = this.modalService.open(UserFormComponent);
     modalRef.componentInstance.user = user;
     modalRef.result
-      .then((user) => {
-        const userIndex = this.users.findIndex((x) => x.id === user.id);
+      .then((result) => {
+        const userIndex = this.users.findIndex((x) => x.id === result.id);
         this.users[userIndex] = user;
       });
   }
@@ -47,8 +48,8 @@ export class UsersComponent implements OnInit {
     const modalRef = this.modalService.open(UserDeleteComponent);
     modalRef.componentInstance.user = user;
     modalRef.result
-      .then((user) => {
-        this.users = this.users.filter((x) => x.id !== user.id);
+      .then((result) => {
+        this.users = this.users.filter((x) => x.id !== result.id);
       });
   }
 }
